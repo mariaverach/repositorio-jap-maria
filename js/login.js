@@ -1,4 +1,4 @@
-
+miStorage = window.sessionStorage;
 var login = sessionStorage.getItem("usuario");
 
 document.addEventListener("DOMContentLoaded",() => {
