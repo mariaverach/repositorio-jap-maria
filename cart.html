@@ -28,9 +28,11 @@
       }
     }
   </style>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
 </head>
 
 <body>
@@ -54,13 +56,195 @@
        </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container p-5" >
+  <div  role="alert" style="background-color:#EEDB94" style="position: relative; width:auto; top: 0;">
+
+          
+
+
+      <div div class = "col-sm-6 ">
+      <div class="modal-dialog text-center" style="position: relative; width:auto; top: 25px;" >
+        <div class="modal-content" > 
+          <p>
+            <img src="img/batman.webp" class="batman" style="position: relative; width:auto; top: 25px;"/>
+          </p>
+            <h2 class="alert-heading">Mi carrito </h2> 
+            <div>
+            <span id="username"></span>
+            </div>
+          
+        </div>
+      </div>
+       </div>
+        <hr style="color: #0056b2;" />
+        <div class="container p-10" >
+          
+             
+          <div class="row">       
+           <div class="col-4" > 
+              <h4 class="alert-heading text-center">Producto </h4>  
+              <div class="list-group" id="productoCar"></div>
+            </div>
+            <div class="list-group" id="productoCar2"></div>
+            <div class="col-3" > 
+              <h4 class="alert-heading text-center"  >Cantidad</h4> 
+             <input type="number" class="text-center form-control" id="cantidad" onchange="subtotal()" min="0"> </inpunt>
+            </div>
+              <div class="col-3" > 
+               <h4 class="alert-heading text-center">Resultado</h4> 
+                <div class="text-center" id="resultado">0</div>
+              </div>
+     
+              
+          </div>
+          
+          <hr style="color: #0056b2;" />   
+          <!--oOCIONES DE ENVÍO-->
+          <div>
+            <p>
+              <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Información de Envío</a>
+           </p>
+            <div class="row">
+              <div class="col-3">
+                <div class="collapse" id="multiCollapseExample1">
+                  <div class="card card-body">
+                    <h3>Direeción</h3>
+                    <form class="needs-validation" novalidate>
+                      <div class="form-row">
+                        <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                          <label for="validationCustom03">Ciudad</label>
+                          <input type="text" class="form-control" id="validationCustom03" required>
+                          <div class="invalid-feedback">
+                            Ingresa la ciudad
+                          </div>
+                        </div>
+                        <div >
+                          <label for="validationCustom05">Calle</label>
+                          <input type="text" class="form-control" id="validationCustom05" required>
+                          <div class="invalid-feedback">
+                            Ingresa Calle
+                          </div>
+                        </div>
+                        <div>
+                          <label for="validationCustom05">Número de Casa</label>
+                          <input type="text" class="form-control" id="validationCustom05" required>
+                          <div class="invalid-feedback">
+                            Ingresa Info de Campo
+                          </div>
+                          </div>
+                        <div >
+                          <label for="validationCustom04">Tipo de Envío</label>
+                          <select id="envio" class="custom-select" id="validationCustom04" required>
+                            <option selected disabled value="" onchange="Total()">Tipo de envío</option>
+                            <option id="premium">Premium (2 a 5 días)</option>
+                            <option id="express">Express (5 a 8 días) </option>
+                            <option id="estandar">Estándar (12 a 15 días)</option> 
+                          </select>
+                          <div class="invalid-feedback">
+                            Selecciona Tipo de Envío.
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                          <label class="form-check-label" for="invalidCheck">
+                            Acepto los terminos y condiciones 
+                          </label>
+                          <div class="invalid-feedback">
+                            Tienes que aceptar los términos y condiciones
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary" type="submit" class="btn btn-primary" id="btonPago" data-toggle="modal" data-target="#exampleModal">Forma de Pago</button>
+                      <div id="total"></div>
+                    </form>
+           
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <!--FIN DE OPCIONES DE ENVÍO-->
+          </div>
+        <!--Comienzo del modal-->
+        <!-- Botón del modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Cuerpo del modal-->
+      <div class="modal-body">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button id="Tarjeta" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Tarjeta de crédito o débito
+                </button>
+              </h2>
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                  <input class="form-control form-control-sm reqTarj" type="text"  id="tarjeta" placeholder="Número de Tarjeta">
+                  <div id="mensaje1"></div>
+                  <input class="form-control form-control-sm reqTarj" type="text" id="nomyApe"  placeholder="Nombre y Apellido">
+                  <div id="mensaje2"></div>
+                  <input class="form-control form-control-sm reqTarj" type="text" id="codigo"  placeholder="Código de Seguridad"> 
+                  <div id="mensaje3"></div>
+                </div>
+                  
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button  class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Transferencia bancaria
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                
+                <input class="form-control form-control-sm" type="text" id="nombreD" placeholder="Nombre del depositante">
+                <input class="form-control form-control-sm" type="text" id="referencia"placeholder="Número de Referencia">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="aceptar" >Aceptar</button>
+      </div>
     </div>
+  </div>
+</div>
+        <!--Fin del modal-->
+      </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+        <div class="list-group" id="productoCar">
+         
+        </div>
+     </div>
+     
+  </div>
+  
+  
+  </div>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
