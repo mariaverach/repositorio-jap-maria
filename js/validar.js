@@ -4,10 +4,10 @@ boton.addEventListener("click",() => {
     var user = document.getElementById("usuario").value;
     var pass = document.getElementById("contraseña").value;
     
-   if (user == null || user== "" ) {
+   if ( user== "" ) {
     document.getElementById("mensaje1").innerHTML = "Ingrese Usuario";
         
- } if (pass == null || pass == ""){
+ } if ( pass == ""){
     document.getElementById("mensaje2").innerHTML = "Ingrese Contraseña";
 } else { 
   sessionStorage.setItem("usuario", user);
